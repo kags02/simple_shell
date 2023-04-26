@@ -26,16 +26,17 @@ size_t print_list(const list_t *h)
  * @h: the string to insert.
  * Return: the updated list.
  */
-list_t *insert_nodeint_at_index(list_t **head, unsigned int idx, const char *h)
+list_t *insert_nodeint_at_index(list_t **head, int idx, const char *h)
 {
 	list_t *new_node = NULL;
 	list_t *previous_node = NULL;
-	unsigned int i = 0;
+	int i = 0;
+	size_t v = idx;
 	char *std;
 
 	std = strdup(h);
 	new_node = malloc(sizeof(list_t));
-	if (new_node == NULL || idx > listint_len(*head))
+	if (new_node == NULL || v > listint_len(*head))
 	{
 		free(new_node);
 		return (NULL);
@@ -130,24 +131,26 @@ int owncmdhandler(char **parsed, char **envp, list_t **head, char *s)
 	{
 		case 1:
 			_functionexit(parsed[1]);
+			return (1);
 		case 2:
 			if (strcmp(parsed[0], "cd") == 0)
 			{getcwd(w, 1024);
 				b = chdir(parsed[1]);
 				if (b == -1)
 				{
-					if (parsed[1] == NULL)
+					if (parsed[1] == NULL && envp != NULL)
 					{ t = print_node(*head, "HOME");
 							chdir(t); }
 					else if (strcmp(parsed[1], "-") == 0)
 						chdir(s); }
 				strcpy(s, w);
-				insertdelete(head);
-				return (1); }
+				insertdelete(head); }
+				return (1);
 		case 3:
 			if (c == 3)
 			{ print_list(*head);
 				return (1); }
+			return (1);
 		case 4:
 			hello(f, head, parsed, c);
 			return (1);
