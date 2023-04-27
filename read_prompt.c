@@ -7,6 +7,7 @@
 
 void read_prompt(char *cmd)
 {
+	printf(" $");
 	fgets(cmd, MAX_CMD_LEN, stdin);
 
 	if (feof(stdin))

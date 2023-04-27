@@ -23,7 +23,7 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		while (1)
 	{
-		write(1, "$ ", 2);
+	/*	write(1," $",2);*/
 		read_prompt(cmd);
 		split_prompt(cmd, args);
 		b = execuve(args[0]);
@@ -36,16 +36,17 @@ int main(int argc, char *argv[], char *envp[])
 		pid = fork();
 		if (pid == 0)
 		{
-			if (execve(args[0], args, NULL) == -1)
-		{
+			if (execve(args[0], args, NULL) == -1 && b != 2)
+			{
 			if (args[0] == NULL)
-				exit(0);
-			if (b != 2 && args[0] != NULL)
+			exit(0);
+			if (b != 2)
 				perror(argv[0]);
 		}
+			else
 			exit(0); }
-		if (args[0] != NULL)
-		{ wait(&status);
-		owncmdhandler(args, envp, &head, df); }}
+		wait(&status);
+			if (args[0] != NULL)
+				owncmdhandler(args, envp, &head, df); }
 	free(e); }
 	return (0); }
