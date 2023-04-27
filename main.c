@@ -46,6 +46,7 @@ int main(int argc, char *argv[], char *envp[])
 			else
 			exit(0); }
 		wait(&status);
+		fflush(stdout);
 			if (args[0] != NULL)
 				owncmdhandler(args, envp, &head, df); }
 	free(e); }
