@@ -23,7 +23,7 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		while (1)
 	{
-	/*	write(1," $",2);*/
+		prompt();
 		read_prompt(cmd);
 		split_prompt(cmd, args);
 		b = execuve(args[0]);

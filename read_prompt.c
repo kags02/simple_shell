@@ -11,7 +11,8 @@ void read_prompt(char *cmd)
 
 	if (feof(stdin))
 	{
-		printf("\n");
+		if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
 		exit(0);
 	}
 	cmd[strlen(cmd) - 1] = '\0';

@@ -20,6 +20,7 @@ typedef struct list_s
 	char *str;
 	struct list_s *next;
 } list_t;
+void prompt(void);
 void inputenv(char **envp, list_t **head);
 list_t *insert_nodeint_at_index(list_t **head, int idx, const char *h);
 list_t *add_node_end(list_t **head, const char *str);

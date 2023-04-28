@@ -49,3 +49,17 @@ void inputenv(char **envp, list_t **head)
 		e++;
 	}
 }
+/**
+ * prompt - prints where to put command.
+ * Return: void.
+ */
+void prompt(void)
+{
+	char *prompt = {"$ "};
+
+	if (isatty(STDIN_FILENO))
+	{
+		write(STDOUT_FILENO, prompt, strlen(prompt));
+	}
+}
+
