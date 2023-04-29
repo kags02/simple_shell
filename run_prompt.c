@@ -17,7 +17,8 @@ void run_prompt(char **args)
 		if (execve(args[0], args, NULL) == -1)
 		{
 			if (args[0] == NULL)
-				exit(0);
+				write(1,"\n",1);
+			else
 			perror("Error");
 		}
 		exit(0);
@@ -26,30 +27,16 @@ void run_prompt(char **args)
 		wait(&status);
 	}
 }
-/**
- * execuve - looks for a builtin function and if is not it checks
- *           if the string have '/'.
- * @v: pointer to string.
- * Return: 1 if it is a builtin function or null
- * or when it contains '/' char.
- *         else return 0.
- */
 int execuve(char *v)
 {
-	int y = 0, b;
-
-	b = checkbuiltin(v);
-	if (b == 1)
-		return (2);
+	int y=0;
 	if (v == NULL)
-		return (1);
-	while (v[y] != '\0')
+		return 1;
+	while(v[y] != '\0')
 	{
 		if (v[y] == '/')
-		{
-		return (1);
-		}
+		return 1;
 		y++;
 	}
-	return (0);
+	return 0;
 }
