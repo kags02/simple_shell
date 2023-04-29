@@ -46,7 +46,9 @@ int execuve(char *v)
 	while (v[y] != '\0')
 	{
 		if (v[y] == '/')
+		{
 		return (1);
+		}
 		y++;
 	}
 	return (0);

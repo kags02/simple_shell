@@ -7,11 +7,19 @@
 int _functionexit(char *s)
 {
 	if (!s)
+	{
+		free(s);
 		exit(0);
+	}
 	if (s == NULL)
+	{
+		free(s);
 		exit(0);
+	}
 	if (_atoi(s) != -1)
-	exit(_atoi(s));
+	{	
+		free(s);
+	exit(_atoi(s)); }
 	return (1);
 }
 /**
@@ -31,7 +39,9 @@ strcat(f, parsed[2]);
 add_node_end(head, f);
 	}
 	else if (parsed[1] == NULL && c == 4)
+	{
 		print_list(*head);
+	}
 }
 /**
  * inputenv - puts environment variables in linked list.

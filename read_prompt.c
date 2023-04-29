@@ -37,6 +37,7 @@ char *print_node(list_t *head, char *h)
 		head = head->next;
 		i++;
 	}
+
 		return (NULL);
 }
 /**

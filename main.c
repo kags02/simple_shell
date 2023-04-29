@@ -42,12 +42,16 @@ int main(int argc, char *argv[], char *envp[])
 			exit(0);
 			if (b != 2)
 				perror(argv[0]);
+			exit(0);
 		}
 			else
 			exit(0); }
 		wait(&status);
 			if (args[0] != NULL)
-				owncmdhandler(args, envp, &head, df);
-			fflush(stdout);	}
-	free(e); }
+				owncmdhandler(args, envp, &head, df); }
+/*	free(e);
+	free(args);
+	free(cmd);
+	free(df);*/
+	}
 	return (0); }

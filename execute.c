@@ -140,11 +140,14 @@ int owncmdhandler(char **parsed, char **envp, list_t **head, char *s)
 				{
 					if (parsed[1] == NULL && envp != NULL)
 					{ t = print_node(*head, "HOME");
-							chdir(t); }
+			/*	       if (chdir(t) == -1)
+			 *	       		}*/
+					chdir(t);
+				}
 					else if (strcmp(parsed[1], "-") == 0)
 						chdir(s); }
 				strcpy(s, w);
-				insertdelete(head); }
+				insertdelete(head);	}
 				return (1);
 		case 3:
 			if (c == 3)
@@ -152,7 +155,10 @@ int owncmdhandler(char **parsed, char **envp, list_t **head, char *s)
 				return (1); }
 			return (1);
 		case 4:
-			hello(f, head, parsed, c);
+			if (c == 4)
+			{
+				hello(f, head, parsed, c);
+			return 1;}
 			return (1);
 		case 5:
 			return (1);

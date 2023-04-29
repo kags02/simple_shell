@@ -75,6 +75,7 @@ list_t *add_node_end(list_t **head, const char *str)
 			last = last->next;
 		last->next = new;
 	}
+
 	return (*head);
 }
 /**
@@ -128,6 +129,9 @@ int delete_node(list_t **head, char *h)
 		if (i == list_len)
 			return (-1);
 	}
+	free(old_node);
+	free(h);
+
 	return (-1);
 }
 /**
