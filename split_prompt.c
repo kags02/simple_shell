@@ -21,3 +21,25 @@ void split_prompt(char *cmd, char **args)
 
 	}
 }
+/**
+* free_listint2 - frees a linked list.
+*@head: head of a list.
+*
+*Return: no return.
+*/
+ void free_listint2(list_t **head)
+{
+list_t *temp;
+list_t *curr;
+if (head != NULL)
+{
+curr = *head;
+while ((temp = curr) != NULL)
+{
+curr = curr->next;
+free(temp);
+}
+*head = NULL;
+}
+}
+

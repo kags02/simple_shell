@@ -49,9 +49,11 @@ int main(int argc, char *argv[], char *envp[])
 		wait(&status);
 			if (args[0] != NULL)
 				owncmdhandler(args, envp, &head, df); }
-/*	free(e);
+	
+		free(e);
+		free_listint2(&head);
 	free(args);
 	free(cmd);
-	free(df);*/
+	free(df);
 	}
 	return (0); }
